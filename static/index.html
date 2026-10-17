@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ht">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <title>Kòd QR yo | Yon sèl fwa</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
+  <script src="/scanner.js" defer></script>
+  <script src="/pages-dashboard.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="/"><span class="wordmark-mark" aria-hidden="true">Q</span><span>yon sèl fwa<span class="wordmark-dot">.</span></span></a>
+    <form id="logout-form"><button class="text-button" type="submit">Dekonekte <span aria-hidden="true">&nearr;</span></button></form>
+  </header>
+  <main class="main-shell">
+    <section class="page-heading">
+      <div><p class="eyebrow">KONTWÒL AKSÈ <span class="eyebrow-rule"></span> <span>YON SÈL ITILIZASYON</span></p><h1>Kòd QR yo<span class="wordmark-dot">.</span></h1><p class="page-intro">Chak moun resevwa pwòp kòd pa li. Premye eskanè a valide l; apre sa, li fini.</p></div>
+      <button class="button button-outline print-button" type="button" id="print-button"><span aria-hidden="true">&#9113;</span> Enprime lis la</button>
+    </section>
+    <section class="stats-row" aria-label="Rezime kòd yo">
+      <div class="stat"><span class="stat-label">TOUT KÒD</span><strong id="total-count">0</strong></div>
+      <div class="stat"><span class="stat-label">DISPONIB</span><strong id="available-count">0</strong></div>
+      <div class="stat"><span class="stat-label">ITILIZE</span><strong id="used-count">0</strong></div>
+    </section>
+    <section class="scanner-section" aria-labelledby="scanner-heading">
+      <div class="section-heading scanner-heading"><div><p class="eyebrow">VERIFYE AKSÈ</p><h2 id="scanner-heading">Eskane yon kòd</h2></div><span class="section-index">KAMERA TELEFÒN</span></div>
+      <div class="scanner-layout">
+        <div id="qr-reader" class="scanner-reader" aria-label="Kamera pou eskane kòd QR"></div>
+        <div class="scanner-side">
+          <div id="scan-result" class="scan-result" role="status" aria-live="polite"><span class="scan-result-mark" aria-hidden="true">QR</span><div><p class="scan-result-state">Pare pou eskane</p><p class="scan-result-label">Louvri kamera a, epi mete QR la devan l.</p></div></div>
+          <div class="scanner-actions"><button class="button button-accent" id="start-scanner" type="button"><span aria-hidden="true">&#128247;</span> Louvri kamera</button><button class="button button-outline" id="stop-scanner" type="button" hidden>Fèmen kamera</button></div>
+          <p class="scanner-help">Lè kòd la valide, li make kòm itilize. Kamera navigatè a bezwen HTTPS oswa localhost.</p>
+        </div>
+      </div>
+    </section>
+    <section class="create-section" aria-labelledby="create-heading">
+      <div class="section-heading"><div><p class="eyebrow">NOUVO LO</p><h2 id="create-heading">Kreye kòd yo</h2></div><span class="section-index">01 / 02</span></div>
+      <form id="create-form" class="create-form">
+        <label for="labels">Non oswa ID moun yo <span>YOUN PA LIY</span></label>
+        <textarea id="labels" name="labels" rows="4" placeholder="Marie Jean&#10;David Pierre&#10;Envite 03" required></textarea>
+        <div class="form-bottom"><p>Chak liy ap resevwa yon QR diferan.</p><button class="button button-accent" type="submit"><span aria-hidden="true">+</span> Kreye kòd QR</button></div>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="codes-section" aria-labelledby="codes-heading">
+      <div class="section-heading codes-heading"><div><p class="eyebrow">KÒD OU YO</p><h2 id="codes-heading">Lis aksè</h2></div><span class="section-index">02 / 02</span></div>
+      <div class="table-wrap" id="codes-table" hidden><table><thead><tr><th>KÒD</th><th>MOUN / ID</th><th>ETA</th><th>DAT KREYASYON</th><th>LYEN</th></tr></thead><tbody id="code-rows"></tbody></table></div>
+      <div class="empty-state" id="empty-state"><span aria-hidden="true">&#8595;</span><p>Pa gen kòd ankò. Antre non yo anlè a pou kòmanse.</p></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

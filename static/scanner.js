@@ -21,6 +21,7 @@ function getToken(decodedText) {
     const url = new URL(decodedText, window.location.origin);
     const match = url.pathname.match(/^\/redeem\/([A-Za-z0-9_-]+)\/?$/);
     if (match) return decodeURIComponent(match[1]);
+    if (url.pathname === "/redeem" || url.pathname === "/redeem.html") return url.searchParams.get("token");
   } catch {
     return null;
   }

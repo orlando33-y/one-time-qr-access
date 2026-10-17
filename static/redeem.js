@@ -1,8 +1,13 @@
 const page = document.querySelector(".redeem-shell");
 const result = document.querySelector("#result");
-const token = page.dataset.token;
+const token = page.dataset.token || new URLSearchParams(window.location.search).get("token");
 
-fetch(`/api/redeem/${encodeURIComponent(token)}`, { method: "POST", headers: { "bypass-tunnel-reminder": "1" } })
+if (!token) {
+  result.className = "result-panel result-invalid";
+  result.innerHTML = '<span class="result-symbol" aria-hidden="true">!</span><p class="eyebrow">KÒD PA VALAB</p><h1>Nou pa jwenn li.</h1><p class="result-copy">Kòd sa a pa egziste oswa li pa valab.</p>';
+}
+
+if (token) fetch(`/api/redeem/${encodeURIComponent(token)}`, { method: "POST", headers: { "bypass-tunnel-reminder": "1" } })
   .then(async (response) => {
     const data = await response.json();
     if (response.ok) {
