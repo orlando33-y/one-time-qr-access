@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: qr-yon-sel-fwa
+    runtime: python
+    plan: 0.5c-512mb
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --access-logfile - app:app
+    healthCheckPath: /health
+    disk:
+      name: qr-codes-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: QR_DATABASE
+        value: /var/data/codes.sqlite3
+      - key: SESSION_COOKIE_SECURE
+        value: "true"

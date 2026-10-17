@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ht">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <title>Verifye kòd la | Yon sèl fwa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% if state == 'pending' %}<script src="{{ url_for('static', filename='redeem.js') }}" defer></script>{% endif %}
+</head>
+<body class="redeem-page">
+  <main class="redeem-shell" data-token="{{ token }}" data-state="{{ state }}">
+    <a class="wordmark" href="/" aria-label="Yon sèl fwa"><span class="wordmark-mark" aria-hidden="true">Q</span><span>yon sèl fwa<span class="wordmark-dot">.</span></span></a>
+    <section id="result" class="result-panel result-{{ state }}" aria-live="polite">
+      {% if state == 'pending' %}<span class="result-symbol" aria-hidden="true">...</span><p class="eyebrow">T AP VERIFYE</p><h1>Yon ti moman.</h1><p class="result-copy">N ap verifye kòd aksè sa a.</p>
+      {% elif state == 'used' %}<span class="result-symbol" aria-hidden="true">&times;</span><p class="eyebrow">KÒD LA FÈMEN</p><h1>Deja itilize.</h1><p class="result-copy">Kòd sa a te deja sèvi. Mande moun ki voye l la yon nouvo kòd.</p>
+      {% else %}<span class="result-symbol" aria-hidden="true">!</span><p class="eyebrow">KÒD PA VALAB</p><h1>Nou pa jwenn li.</h1><p class="result-copy">Kòd sa a pa egziste oswa li pa valab.</p>{% endif %}
+      <p id="person-label" class="person-label">{% if label %}{{ label }}{% endif %}</p>
+    </section>
+    <footer class="login-footer">KÒD AKSÈ <span>·</span> YON SÈL ITILIZASYON</footer>
+  </main>
+</body>
+</html>
