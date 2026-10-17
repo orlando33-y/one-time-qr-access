@@ -19,4 +19,4 @@ Apre sa, antre sou `http://localhost:5000`. Kole non oswa ID yo nan paj prensipa
 
 Sèvis la dwe rete limen epi adrès QR la dwe aksesib pou moun k ap eskane a. `localhost` mache sèlman sou òdinatè k ap kouri sèvis la. Pou teste ak telefòn sou menm rezo a, sèvi ak adrès rezo òdinatè a; sepandan, browser telefòn yo bezwen yon paj HTTPS pou bay aksè kamera. Pou itilize eskanè kamera a sou telefòn oswa voye kòd bay moun lòt kote, mete aplikasyon an sou yon hosting HTTPS epi mete adrès piblik la nan `BASE_URL`, pa egzanp `https://qr.egzanp.com`.
 
-Kenbe `ADMIN_PASSWORD` ak `SECRET_KEY` sekrè; pa sèvi ak modpas default `change-me` sou yon sèvè ki aksesib pou lòt moun. Kenbe fichye bazdone `data/codes.sqlite3` sou yon depo ki pèsistan. Sèvi ak yon sèl kopi aplikasyon an pou menm bazdone SQLite la.
+Kenbe `ADMIN_PASSWORD` ak `SECRET_KEY` sekrè. App la refize demare si `ADMIN_PASSWORD` pa defini. Kenbe fichye bazdone `data/codes.sqlite3` sou yon depo ki pèsistan. Sèvi ak yon sèl kopi aplikasyon an pou menm bazdone SQLite la.

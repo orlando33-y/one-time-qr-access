@@ -16,7 +16,9 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 ROOT = Path(__file__).resolve().parent
 DATABASE = Path(os.environ.get("QR_DATABASE", ROOT / "data" / "codes.sqlite3"))
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "change-me")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
+if not ADMIN_PASSWORD:
+    raise RuntimeError("ADMIN_PASSWORD environment variable is required.")
 BASE_URL = os.environ.get("BASE_URL", "").rstrip("/")
 
 app = Flask(__name__)
