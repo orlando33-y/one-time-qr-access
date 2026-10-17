@@ -5,5 +5,5 @@ pages_build_output_dir = "./static"
 [[d1_databases]]
 binding = "DB"
 database_name = "qr-codes"
-database_id = "00000000-0000-0000-0000-000000000001"
+database_id = "a685a84b-47fa-470f-ae39-8d77aedf3564"
 migrations_dir = "./migrations"
